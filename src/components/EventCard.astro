@@ -1,0 +1,171 @@
+---
+interface Props {
+    title: string;
+    category: string;
+    date: string;
+    location: string;
+    image: string;
+    availability: string;
+    availabilityColor: "emerald" | "amber";
+}
+
+const {
+    title,
+    category,
+    date,
+    location,
+    image,
+    availability,
+    availabilityColor,
+} = Astro.props;
+---
+
+<div class="event-card group">
+    <div class="image-wrapper">
+        <img src={image} alt={title} />
+        <div class="badge category-badge">{category}</div>
+        <div class={`badge availability-badge ${availabilityColor}`}>
+            {availability}
+        </div>
+    </div>
+    <div class="content">
+        <h3>{title}</h3>
+        <div class="info-list">
+            <div class="info-item">
+                <span class="material-symbols-outlined">schedule</span>
+                <span>{date}</span>
+            </div>
+            <div class="info-item">
+                <span class="material-symbols-outlined">location_on</span>
+                <span>{location}</span>
+            </div>
+        </div>
+        <button class="details-btn"> Ver Detalles </button>
+    </div>
+</div>
+
+<style>
+    .event-card {
+        background-color: var(--bg-alt);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+    }
+
+    .event-card:hover {
+        box-shadow:
+            0 20px 25px -5px rgba(123, 22, 62, 0.1),
+            0 10px 10px -5px rgba(123, 22, 62, 0.04);
+        transform: translateY(-4px);
+    }
+
+    .image-wrapper {
+        position: relative;
+        height: 13rem;
+        overflow: hidden;
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+    }
+
+    .event-card:hover .image-wrapper img {
+        transform: scale(1.1);
+    }
+
+    .badge {
+        position: absolute;
+        top: 1rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.25rem;
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        box-shadow: var(--shadow-md);
+    }
+
+    .category-badge {
+        left: 1rem;
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .availability-badge {
+        right: 1rem;
+        color: white;
+    }
+
+    .emerald {
+        background-color: var(--accent-emerald);
+    }
+
+    .amber {
+        background-color: var(--accent-amber);
+    }
+
+    .content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-main);
+        line-height: 1.25;
+        margin-bottom: 1rem;
+        transition: color 0.2s;
+    }
+
+    .event-card:hover h3 {
+        color: var(--primary-color);
+    }
+
+    .info-list {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+    }
+
+    .info-item .material-symbols-outlined {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+    }
+
+    .details-btn {
+        margin-top: 1.5rem;
+        width: 100%;
+        padding: 0.625rem;
+        background-color: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .details-btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+</style>

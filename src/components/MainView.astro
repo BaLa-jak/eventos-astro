@@ -1,0 +1,165 @@
+---
+import Background from "./Background.astro";
+import FiltrosContainer from "../pages/eventos/FiltrosContainer.astro";
+import WebPadding from "./WebPadding.astro";
+import EventCard from "./EventCard.astro";
+---
+
+<WebPadding>
+  <div id="container">
+    <div id="background">
+      <Background />
+    </div>
+
+    <header class="page-header">
+      <h1>Próximos Eventos</h1>
+      <p>
+        Explora y únete a las actividades y eventos más recientes en todos los
+        planteles de nuestra universidad.
+      </p>
+    </header>
+
+    <section>
+      <FiltrosContainer />
+    </section>
+
+    <div class="events-grid">
+      <EventCard
+        title="IA en Ética: Un Seminario Profundo"
+        category="Seminario"
+        date="12 Oct, 2:00 PM - 4:00 PM"
+        location="Campus Hermosillo, Aula 402"
+        image="https://lh3.googleusercontent.com/aida-public/AB6AXuCw9OQKmd4EtyO4PfgSh2D5OLffvTN1dkZ0Xplq1rCO7NflOMdKJkzneOOvIi843e309t4I4LpIuuI0kF5D-oiLSWJqPyJ2NK8x8FfhZW3idaLhLRjo1GvbqhNc9ULX-GR5M7qY0vK5bg-IcafsnuteoyMZEvF60O2cVN66U-lCb3_XeMmy5hWk64Jp3VDAn3hi6vTNlYNFt2zsnXbO_gHXWQd8byLs7n83ZpB8KN1dQ4-cgSDLMsmDuv4VWQYDO2l0QjiFXavZ-g"
+        availability="15 Lugares disponibles"
+        availabilityColor="emerald"
+      />
+      <EventCard
+        title="Final Anual de Basquetbol UES"
+        category="Deportes"
+        date="15 Oct, 6:00 PM"
+        location="Complejo Deportivo"
+        image="https://lh3.googleusercontent.com/aida-public/AB6AXuDsg4tDJDEk1L1pKxiz1Q-NQtgaaYOFoyPBhy_snTb9V39PllFqu8sl0fcoWrtEE3fe6EkPjquycYeGDCL2HNUB8doqA1W_G1jK0hZ7sZylHdeBxW0zFv1PFATuzpwQX8NqfAkCf-JxbDYaFsZ-W6CCwjMAu1mylfQsGxa4wqJbBvxBp-y6rYrP_L_8alPV5fa9gT4KCBRzDbwaq_psb5i9OfaNG7dJ9QEdfTBavgmKiXtWp4zm_pZlIsqgcoodyNMLS2MNdT8sA"
+        availability="50+ Lugares disponibles"
+        availabilityColor="emerald"
+      />
+      <EventCard
+        title="Tech Connect: Feria de Empleo Otoño"
+        category="Feria de Empleo"
+        date="18 Oct, 10:00 AM - 4:00 PM"
+        location="Campus Navojoa, Sala de Exposiciones"
+        image="https://lh3.googleusercontent.com/aida-public/AB6AXuCj2tWOnL1OeSM0aCK8tIk9-YKWcTSQTWUO7E0-mwqeAZ9ik7C1ESM7LbyPKpK_9fNoHbsMnVF_RJQU2v-xCnzMJBTvD09_IzcpSZnaHDSVS7KD6Nu0CSvV_isYpUbe97Y-KFGff34uBcMx22a9ATyHgaduUFA3rjAm_5mjLuo5DSfKv3V9F8bCC4FZKLbXx2lQDx3VFJCxcG939bdxTn4qrbTpBEhUvP34AS4hhw-WJskFA_HiVP2PrnlM63OmcGr-MLtE4mViGg"
+        availability="Limitado: 8 libres"
+        availabilityColor="amber"
+      />
+      <EventCard
+        title="Convivencia de Graduados: Noche Social"
+        category="Social"
+        date="20 Oct, 7:30 PM"
+        location="Centro de Estudiantes"
+        image="https://lh3.googleusercontent.com/aida-public/AB6AXuAnjK_isGZD8ZdqR-Rrdyd6uPPCFPUY8HFoELe8JBEt8etwLsniUJV2-QZXy-K6ld3cjcFpnK5hDDc5OaQbB6nprfPVneQOxz22tnrmzpV_8R5N3R1aa20Mi2cQA3Wc3_oKDZvWKGwp4M3mCMaAd82VJ-XLq4-TzsS4wii9Ss5ZKx8XfWBYAO-mTPt5d62seq0dbJg3YYtbsSVPKx-RJFUrFUtvBGhLG9Jn7o5XuSPSMmFWo_o15s4zHjzvsDqc6sGdQ-3fRR5JCA"
+        availability="100+ Lugares disponibles"
+        availabilityColor="emerald"
+      />
+    </div>
+
+    <div class="load-more-container">
+      <button class="load-more-btn">
+        Cargar más eventos
+        <span class="material-symbols-outlined">expand_more</span>
+      </button>
+      <p class="stats">Mostrando 4 de 42 eventos</p>
+    </div>
+  </div>
+</WebPadding>
+
+<style>
+  #container {
+    padding: 4rem 0;
+    min-height: 100vh;
+  }
+
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.15;
+  }
+
+  #background :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .page-header p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 42rem;
+    line-height: 1.6;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .load-more-container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .load-more-btn {
+    background-color: var(--bg-alt);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 1rem 3rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .load-more-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .stats {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2.25rem;
+    }
+  }
+</style>
