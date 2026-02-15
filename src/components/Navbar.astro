@@ -1,0 +1,163 @@
+---
+interface Props {
+  title: string;
+}
+
+let { title } = Astro.props;
+---
+
+<nav id="navbar">
+  <div class="navbar-container">
+    <section class="section-container">
+      <a href="/" class="brand">
+        <div class="logo-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="logo-text-wrapper">
+          <span class="logo-title">UES</span>
+          <span class="logo-subtitle">UNIVERSIDAD ESTATAL DE SONORA</span>
+        </div>
+      </a>
+      <div class="title">
+        <h1 class="title-text">{title}</h1>
+      </div>
+    </section>
+    <section>
+      <div class="nav-links">
+        <i class="fa-solid fa-bell nav-icon"></i>
+        <button class="btn-login">
+          <i class="fa-solid fa-user"></i>
+          Iniciar Sesión
+        </button>
+      </div>
+    </section>
+  </div>
+</nav>
+
+<style>
+  #navbar {
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.6rem 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .section-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .title {
+    position: relative;
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .title-text {
+    font-size: 1.5rem !important;
+    font-weight: 500;
+    color: var(--text-main);
+  }
+
+  .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 2px;
+    background-color: var(--border-color);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    text-decoration: none;
+  }
+
+  .logo-box {
+    background-color: var(--primary-color);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    color: white;
+    font-size: 2rem;
+  }
+
+  .logo-text-wrapper {
+    margin-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-title {
+    color: var(--primary-color);
+    font-weight: 800;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-subtitle {
+    color: #718096;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-icon {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .nav-icon:hover {
+    color: var(--primary-color);
+  }
+
+  .btn-login {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+
+  .btn-login:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(139, 28, 40, 0.2);
+  }
+</style>
