@@ -75,7 +75,7 @@ const RegistroView: React.FC = () => {
         )}
 
         <label htmlFor="clave"><span className="requerido">*</span>Contraseña</label>
-        <input id="clave" type="password" name="clave" />
+        <input id="clave" type="password" name="clave" placeholder="Contraseña"/>
         {errores && errores.clave && <p className="error-text">{errores.clave}</p>}
 
         <button disabled={cargando} type="submit" className="boton">

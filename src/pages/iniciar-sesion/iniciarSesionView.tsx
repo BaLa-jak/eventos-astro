@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 import { registroSchema } from "../../shemas/registroSchema";
+import { navigate } from "astro/virtual-modules/transitions-router.js";
+import "../../styles/registro.css";
 interface ErroresI {
   correo?: string;
   clave?: string;
@@ -42,7 +44,7 @@ const IniciarSesionView: React.FC = () => {
         return;
       }
 
-      window.location.href = "/dashboard";
+      navigate("/dashboard");
     } catch (error) {
       // return new Response(error, { status: 500 });
     } finally {
@@ -52,14 +54,30 @@ const IniciarSesionView: React.FC = () => {
 
 
   return (
-    <main>
-      <h1>Iniciar Sesisón</h1>
-      <form onSubmit={onSubmit}>
+    <main className="contenedor">
+      <section className="seccion">
+        <h1 className="titulo">Bienvenido de nuevo</h1>
+        <p className="subtitulo">
+          Inicia sesión para ver y gestionar los eventos de la Universidad Estatal de Sonora
+        </p>
+      </section>
+      <form onSubmit={onSubmit} className="formulario">
+        <p className="login-text">
+          ¿Aún no tienes cuenta?{" "}
+          <a className="login-link" href="/registro">
+            Regístrate
+          </a>
+        </p>
+        <h1 className="form-title">Iniciar sesión</h1>
         <label htmlFor="correo">Correo electrónico</label>
-        <input type="email" name="correo" id="correo" />
+        <input type="email" name="correo" id="correo" placeholder="Ej. ejemplo@gmail.com" />
+        {errores?.correo && <p className="error-text">{errores.correo}</p>}
         <label htmlFor="clave">Contraseña</label>
         <input type="password" name="clave" id="clave" />
-        <button disabled={cargando} type="submit">Iniciar sesión</button>
+        {errores?.clave && <p className="error-text">{errores.clave}</p>}
+        <button disabled={cargando} type="submit" className="boton">
+          {cargando ? "Ingresando..." : "Iniciar sesión"}
+        </button>
       </form>
     </main>
 
