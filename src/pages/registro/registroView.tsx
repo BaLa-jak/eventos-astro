@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { registroSchema } from "../../shemas/registroSchema";
 import { supabase } from "../../lib/supabase";
 import "../../styles/registro.css";
@@ -50,6 +50,20 @@ const RegistroView: React.FC = () => {
     }
   }, [])
 
+  const verificarUsuario = async () => {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (error || !data) return;
+
+    if (data.user.confirmed_at) {
+      navigate("/dashboard");
+    }
+
+  }
+
+  useEffect(() => {
+    verificarUsuario();
+  }, [])
 
   return (
     <main className="contenedor">
@@ -75,7 +89,7 @@ const RegistroView: React.FC = () => {
         )}
 
         <label htmlFor="clave"><span className="requerido">*</span>Contraseña</label>
-        <input id="clave" type="password" name="clave" />
+        <input id="clave" type="password" name="clave" placeholder="Contraseña" />
         {errores && errores.clave && <p className="error-text">{errores.clave}</p>}
 
         <button disabled={cargando} type="submit" className="boton">

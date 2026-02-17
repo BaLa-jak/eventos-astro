@@ -5,16 +5,16 @@ import { supabase } from "../../../lib/supabase";
 
 export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const formData = await request?.formData();
-  const email = formData.get("correo")?.toString();
-  const password = formData.get("clave")?.toString();
+  const correo = formData.get("correo")?.toString();
+  const clave = formData.get("clave")?.toString();
 
-  if (!email || !password) {
+  if (!correo || !clave) {
     return new Response("Correo electrónico y contraseña obligatorios", { status: 400 });
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
+    email: correo,
+    password: clave,
   });
 
   if (error) {
