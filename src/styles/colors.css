@@ -1,15 +1,17 @@
 :root {
-    --primary-color: #8B1C28;
-    --primary-hover: #6e1620;
-    --secondary-color: #1F2937;
-    --accent-green: #10B981;
-    --accent-orange: #F59E0B;
-    --accent-blue: #3B82F6;
-    --text-main: #111827;
-    --text-muted: #6B7280;
-    --text-light: #F9FAFB;
-    --bg-main: #FFFFFF;
-    --bg-alt: #F3F4F6;
-    --bg-card: #FFFFFF;
-    --border-color: #E5E7EB;
+    --primary-color: #7b163e;
+    /* IDENTIDADA GRAFICA UES */
+    --primary-hover: #a01a4d;
+    --secondary-color: #1a202c;
+    --accent-emerald: #059669;
+    --accent-amber: #d97706;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-light: #f8fafc;
+    --bg-main: #f8f9fa;
+    --bg-alt: #ffffff;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
