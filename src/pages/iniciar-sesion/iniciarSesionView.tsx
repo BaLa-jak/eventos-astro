@@ -1,7 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { registroSchema } from "../../shemas/registroSchema";
 import { navigate } from "astro/virtual-modules/transitions-router.js";
 import "../../styles/registro.css";
+import { supabase } from "../../lib/supabase";
 interface ErroresI {
   correo?: string;
   clave?: string;
@@ -44,12 +45,25 @@ const IniciarSesionView: React.FC = () => {
         return;
       }
 
-      navigate("/dashboard");
+      navigate("https://qeventr.web.app/dashboard");
     } catch (error) {
       // return new Response(error, { status: 500 });
     } finally {
       setCargando(false);
     }
+  }, [])
+
+  const verificarUsuario = async () => {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (error || !data) return;
+
+    navigate("https://qeventr.web.app/dashboard");
+  }
+
+
+  useEffect(() => {
+    verificarUsuario();
   }, [])
 
 
